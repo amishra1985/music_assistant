@@ -11,9 +11,10 @@ class MusicAssistant:
     AI Agent that can take your input and play song on YouTube music.
     start chrome in debugger mode: "c:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --profile-directory=Default --user-data-dir="C:\ChromeDebug"
     """
-    OLLAMA_MODEL = "deepseek-r1:8b"
-    # os.environ["LANGCHAIN_TRACING_V2"] = "false"
-    os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY", "")
+    OLLAMA_MODEL = "llama3.2:latest"
+    OLLAMA_HOST = "http://localhost:11434"
+
+    # os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY", "")
 
     system_prompt = """
                     You are a music assistant.
@@ -41,8 +42,8 @@ class MusicAssistant:
         try:
             # llm = Ollama(model=self.OLLAMA_MODEL)
             llm = ChatOllama(
-                model="llama3.2:latest",
-                base_url="http://localhost:11434",
+                model=self.OLLAMA_MODEL,
+                base_url=self.OLLAMA_HOST,
                 temperature=0.7
             )
 
