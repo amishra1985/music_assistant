@@ -1,0 +1,7 @@
+requests~=2.32.5
+selenium~=4.40.0
+langchain-core~=1.2.7
+streamlit~=1.53.0
+psutil~=7.2.1
+langchain~=1.2.6
+langchain-ollama~=1.0.1
