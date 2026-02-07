@@ -1,6 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from langchain_core.tools import tool
 import requests
 import json
 
@@ -56,31 +53,3 @@ def search_youtube_music(title: str):
                 })
 
     return results
-
-
-
-@tool
-def open_youtube_video(title: str) -> str:
-    """
-           Opens a specific YouTube video in the web browser.
-           Input should be the title of the YouTube video only.
-           param
-           title: str
-    """
-    print(f"title received from AI agent: {title}")
-    songs = search_youtube_music(title)
-
-    # pick the first match
-    url = songs[0]["url"]
-
-    print(f"playing url: {url}")
-
-    # 3. Attach Selenium to the existing Chrome session
-
-    chrome_options = Options()
-    chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get(url)
-
-    return f"Opened in same tab: {url}"
