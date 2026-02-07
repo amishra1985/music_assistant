@@ -5,3 +5,6 @@ streamlit~=1.53.0
 psutil~=7.2.1
 langchain~=1.2.6
 langchain-ollama~=1.0.1
+dotenv~=0.9.9
+mcp==1.26.0
+langchain-mcp-adapters==0.2.1
